@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%231f2a5c%27/%3E%3Ccircle cx=%2713%27 cy=%2713%27 r=%277%27 fill=%27%23f4b73f%27/%3E%3Ccircle cx=%2721%27 cy=%2716%27 r=%277%27 fill=%27%232f7d5b%27 fill-opacity=%27.9%27/%3E%3Ccircle cx=%2715%27 cy=%2722%27 r=%276%27 fill=%27%23c8553d%27 fill-opacity=%27.9%27/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="minga.css">
+    <title>Libro de horas · Minga</title>
+</head>
+<body>
+<header id="cabecera"></header>
+<div id="avisos" aria-live="polite"></div>
+
+<main class="contenedor">
+    <div class="saldo-grande">
+        <div class="cifra" id="saldo">0</div>
+        <p><strong id="saldoEtiqueta" style="color:#fff;font-family:var(--display);font-size:1.3rem">horas disponibles</strong><br>
+           Es lo que puedes usar para pedir ayuda. Cuando ayudas a alguien, tu saldo crece.</p>
+    </div>
+    <section class="tarjeta">
+        <h2>Libro de horas</h2>
+        <p class="bajada" style="margin:-.6rem 0 1rem">Cada movimiento queda registrado y no se puede editar ni borrar.</p>
+        <div class="tabla-scroll">
+            <table>
+                <thead><tr><th>Fecha</th><th>Movimiento</th><th>Horas</th><th>Saldo</th></tr></thead>
+                <tbody id="movimientos"></tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<script src="minga.js"></script>
+<script src="libro.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%231f2a5c%27/%3E%3Ccircle cx=%2713%27 cy=%2713%27 r=%277%27 fill=%27%23f4b73f%27/%3E%3Ccircle cx=%2721%27 cy=%2716%27 r=%277%27 fill=%27%232f7d5b%27 fill-opacity=%27.9%27/%3E%3Ccircle cx=%2715%27 cy=%2722%27 r=%276%27 fill=%27%23c8553d%27 fill-opacity=%27.9%27/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="minga.css">
+    <title>La Plaza · Minga</title>
+</head>
+<body>
+<header id="cabecera"></header>
+<div id="avisos" aria-live="polite"></div>
+
+<main class="contenedor">
+    <div class="encabezado">
+        <div>
+            <h1>La Plaza</h1>
+            <p class="bajada">Ofertas de lo que tus vecinos saben hacer y necesidades en las que puedes echar una mano.</p>
+        </div>
+        <a class="boton primario" href="publicar.html">Publicar en la Plaza</a>
+    </div>
+
+    <div class="filtros">
+        <div class="segmento" id="segTipo" role="group" aria-label="Tipo de publicación">
+            <button type="button" data-tipo="" class="activo">Todo</button>
+            <button type="button" data-tipo="OFERTA">Ofertas</button>
+            <button type="button" data-tipo="NECESIDAD">Necesidades</button>
+        </div>
+        <select id="fCategoria" aria-label="Categoría"><option value="">Todas las categorías</option></select>
+        <select id="fFranja" aria-label="Horario">
+            <option value="">Cualquier horario</option>
+            <option value="MANANA">Mañana (6 a. m. – 12 m.)</option>
+            <option value="TARDE">Tarde (12 m. – 6 p. m.)</option>
+            <option value="NOCHE">Noche (6 – 10 p. m.)</option>
+        </select>
+        <input type="text" id="fBarrio" placeholder="Barrio" aria-label="Barrio">
+        <input type="search" id="fQ" placeholder="Buscar: guitarra, excel, arepas..." aria-label="Buscar">
+    </div>
+
+    <div id="rejilla" class="rejilla-servicios"></div>
+</main>
+
+<dialog id="dlgSolicitar">
+    <form id="formSolicitar" novalidate>
+        <div>
+            <h2 id="solTitulo">Alzar la mano</h2>
+            <p class="bajada" id="solResumen"></p>
+        </div>
+        <div class="campo">
+            <label for="solMensaje">Mensaje (opcional)</label>
+            <textarea id="solMensaje" maxlength="300" placeholder="Cuéntale un poco qué necesitas o qué puedes aportar."></textarea>
+        </div>
+        <div class="campo">
+            <label for="solFecha">Día del encuentro *</label>
+            <input type="date" id="solFecha">
+            <small class="ayuda" id="solFranja"></small>
+            <small class="ayuda" id="solOcupados"></small>
+            <small class="error" id="solErrorFecha"></small>
+        </div>
+        <div class="dlg-acciones">
+            <button type="button" id="solCancelar">Cancelar</button>
+            <button type="submit" class="primario" id="solEnviar">Enviar solicitud</button>
+        </div>
+    </form>
+</dialog>
+
+<script src="minga.js"></script>
+<script src="plaza.js"></script>
+</body>
+</html>

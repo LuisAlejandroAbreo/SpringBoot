@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%231f2a5c%27/%3E%3Ccircle cx=%2713%27 cy=%2713%27 r=%277%27 fill=%27%23f4b73f%27/%3E%3Ccircle cx=%2721%27 cy=%2716%27 r=%277%27 fill=%27%232f7d5b%27 fill-opacity=%27.9%27/%3E%3Ccircle cx=%2715%27 cy=%2722%27 r=%276%27 fill=%27%23c8553d%27 fill-opacity=%27.9%27/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="minga.css">
+    <title>Publicar · Minga</title>
+</head>
+<body>
+<header id="cabecera"></header>
+<div id="avisos" aria-live="polite"></div>
+
+<main class="contenedor">
+    <div class="encabezado">
+        <div>
+            <h1>Publicar</h1>
+            <p class="bajada">Cuéntale a la Minga qué puedes ofrecer o qué necesitas. Una hora siempre vale una hora.</p>
+        </div>
+    </div>
+
+    <div class="dos-columnas">
+        <section class="tarjeta sticky" id="tarjetaForm">
+            <h2 id="tituloForm">Nueva publicación</h2>
+            <div id="mensaje" class="mensaje" role="alert" hidden></div>
+            <form id="formServicio" novalidate style="display:flex;flex-direction:column;gap:1rem">
+                <div class="campo">
+                    <label for="tipo">¿Qué quieres publicar? *</label>
+                    <select id="tipo">
+                        <option value="OFERTA">Una oferta: puedo ayudar con…</option>
+                        <option value="NECESIDAD">Una necesidad: necesito ayuda con…</option>
+                    </select>
+                </div>
+                <div class="campo">
+                    <label for="titulo">Título *</label>
+                    <input type="text" id="titulo" maxlength="80" placeholder="Ej: Clases de guitarra para principiantes">
+                </div>
+                <div class="campo">
+                    <label for="descripcion">Descripción *</label>
+                    <textarea id="descripcion" maxlength="500" placeholder="Cuenta los detalles: qué incluye, qué llevar, cuándo te queda mejor…"></textarea>
+                </div>
+                <div class="campos-fila">
+                    <div class="campo">
+                        <label for="categoria">Categoría *</label>
+                        <select id="categoria"><option value="">Elige una</option></select>
+                    </div>
+                    <div class="campo">
+                        <label for="modalidad">Modalidad *</label>
+                        <select id="modalidad">
+                            <option value="PRESENCIAL">Presencial</option>
+                            <option value="VIRTUAL">Virtual</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="campos-fila">
+                    <div class="campo">
+                        <label for="horas">Horas estimadas (1 a 8) *</label>
+                        <input type="number" id="horas" min="1" max="8" value="1">
+                    </div>
+                    <div class="campo">
+                        <label for="franja">Mejor horario *</label>
+                        <select id="franja">
+                            <option value="">Elige uno</option>
+                            <option value="MANANA">Mañana (6 a. m. – 12 m.)</option>
+                            <option value="TARDE">Tarde (12 m. – 6 p. m.)</option>
+                            <option value="NOCHE">Noche (6 – 10 p. m.)</option>
+                            <option value="FLEXIBLE">Cualquier horario</option>
+                        </select>
+                    </div>
+                </div>
+                <small class="ayuda" style="margin-top:-.4rem">El horario ayuda a tus vecinos a saber cuándo te queda mejor. No puedes repetir una publicación con el mismo título.</small>
+                <div style="display:flex;gap:.6rem">
+                    <button type="submit" id="btnGuardar" class="primario" style="flex:1">Publicar</button>
+                    <button type="button" id="btnCancelar" hidden>Cancelar edición</button>
+                </div>
+            </form>
+        </section>
+
+        <section>
+            <h2 style="margin-bottom:1rem">Mis publicaciones</h2>
+            <div id="mias" class="rejilla-servicios" style="grid-template-columns:1fr"></div>
+        </section>
+    </div>
+</main>
+
+<script src="minga.js"></script>
+<script src="publicar.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+package com.minga.model;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+import java.time.LocalDateTime;
+import java.util.Locale;
+
+@Entity
+@Table(name = "usuarios")
+public class Usuario {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false, unique = true, length = 20)
+    private String username;
+
+    @Column(nullable = false, unique = true, length = 100)
+    private String email;
+
+    // Hash BCrypt, nunca texto plano
+    @Column(nullable = false, length = 100)
+    private String password;
+
+    @Column(nullable = false, length = 60)
+    private String nombreCompleto;
+
+    @Column(nullable = false, length = 40)
+    private String barrio;
+
+    @Column(length = 200)
+    private String biografia;
+
+    @Column(nullable = false, length = 20)
+    private String rol = "USER";
+
+    @Column(nullable = false)
+    private int intentosFallidos = 0;
+
+    private LocalDateTime bloqueadoHasta;
+
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime fechaRegistro = LocalDateTime.now();
+
+    public Usuario() {
+    }
+
+    /** Los usuarios no distinguen mayusculas/minusculas ni espacios en los extremos. */
+    public static String normalizarUsername(String username) {
+        return username == null ? "" : username.trim().toLowerCase(Locale.ROOT);
+    }
+
+    public boolean estaBloqueado() {
+        return bloqueadoHasta != null && bloqueadoHasta.isAfter(LocalDateTime.now());
+    }
+
+    public Long getId() { return id; }
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
+    public String getNombreCompleto() { return nombreCompleto; }
+    public void setNombreCompleto(String nombreCompleto) { this.nombreCompleto = nombreCompleto; }
+    public String getBarrio() { return barrio; }
+    public void setBarrio(String barrio) { this.barrio = barrio; }
+    public String getBiografia() { return biografia; }
+    public void setBiografia(String biografia) { this.biografia = biografia; }
+    public String getRol() { return rol; }
+    public void setRol(String rol) { this.rol = rol; }
+    public int getIntentosFallidos() { return intentosFallidos; }
+    public void setIntentosFallidos(int intentosFallidos) { this.intentosFallidos = intentosFallidos; }
+    public LocalDateTime getBloqueadoHasta() { return bloqueadoHasta; }
+    public void setBloqueadoHasta(LocalDateTime bloqueadoHasta) { this.bloqueadoHasta = bloqueadoHasta; }
+    public LocalDateTime getFechaRegistro() { return fechaRegistro; }
+}
